@@ -10,6 +10,7 @@
 #include <vector>
 #include <sstream>
 #include <unordered_map>
+#include <algorithm> // 用于 std::min_element
 
 class Code_practice {
 public:
@@ -24,6 +25,9 @@ class StringPractice:public Code_practice{
 public:
     void string_Practice(const std::string&str1, const std::string& str2 );
     int romanToInt(const std::string &str);
+    std::string longestCommonPrefix(std::vector<std::string> &str);
+    std::string longestCommonPrefix2(std::vector<std::string> &str);
+
 };
 
 

@@ -5,20 +5,21 @@
 
 #include "./practice/PalindromeChecker.h"
 #include "./practice/practice_leetCode.h"
+
+using  namespace  std; // 导入命名空间
 /**
  *  main
  * @return err
  */
 int main() {
     // 示例测试
-    std::string s;
-    std::cout << "Please input: ";
-    std::cin >> s;
 
     StringPractice strPra;
 
-    int result = strPra.romanToInt(s);
-    std::cout << "count: " << result << std::endl;
+    vector <string> strs = {"interspace", "internet", "interval"};
+    basic_string<char> str = strPra.longestCommonPrefix2(strs);
+
+    cout<< str << endl;
 
     return 0;
 }
