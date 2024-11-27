@@ -12,14 +12,17 @@ using  namespace  std; // 导入命名空间
  * @return err
  */
 int main() {
-    // 示例测试
+    StringPractice strPra; // 实例化类
 
-    StringPractice strPra;
+    cout << "Enter a string containing only '(', ')', '{', '}', '[' and ']': "; // 提示用户输入
+    string input;
+    cin >> input; // 从终端读取字符串
 
-    vector <string> strs = {"interspace", "internet", "interval"};
-    basic_string<char> str = strPra.longestCommonPrefix2(strs);
-
-    cout<< str << endl;
+    if(strPra.isValid(input)){
+        cout << "The string is valid." << endl; // 有效字符串
+    } else {
+        cout << "The string is not valid." << endl; // 无效字符串
+    }
 
     return 0;
 }

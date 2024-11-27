@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <stack>
 #include <sstream>
 #include <unordered_map>
 #include <algorithm> // 用于 std::min_element
@@ -27,7 +28,7 @@ public:
     int romanToInt(const std::string &str);
     std::string longestCommonPrefix(std::vector<std::string> &str);
     std::string longestCommonPrefix2(std::vector<std::string> &str);
-
+    bool isValid(std::string &str);
 };
 
 

@@ -101,3 +101,38 @@ std::string StringPractice::longestCommonPrefix2(std::vector<std::string> &strs)
     // 如果所有字符都匹配，返回最短字符串
     return minStr;
 }
+
+/**
+ *  给定一个只包括 '('，')'，'{'，'}'，'['，']' 的字符串 ，判断字符串是否有效。
+ *  左括号必须用相同类型的右括号闭合。
+ *  左括号必须以正确的顺序闭合。
+ *  每个右括号都有一个对应的相同类型的左括号。
+ * @param str
+ * @return
+ */
+bool StringPractice::isValid(std::string &str) {
+    int len = str.size();
+    // 获取的字符串必须是偶数，使用 % 可以避免负数除法（虽然这里不可能有负数）
+    if( len%2 != 0){
+        return false;
+    }
+    std::stack<char> stk; // 用于存储左括号
+    for (char c : str) {
+        if (c == '(' || c == '{' || c == '[') {
+            stk.push(c); // 左括号入栈
+        } else {
+            if (stk.empty())
+                return false; // 堆栈为空
+            // 当进入该条，说明当前匹配到右括号，需要出栈对应的左括号
+            char top = stk.top(); // 获取栈顶的左括号
+            if ((top == '(' && c == ')') ||
+                (top == '{' && c == '}') ||
+                (top == '[' && c == ']')) {
+                stk.pop(); // 匹配成功，弹出栈顶
+            } else {
+                return false; // 不匹配
+            }
+        }
+    }
+    return stk.empty(); // 如果栈为空，说明所有括号都匹配成功
+}
