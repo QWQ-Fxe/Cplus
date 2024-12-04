@@ -136,3 +136,28 @@ bool StringPractice::isValid(std::string &str) {
     }
     return stk.empty(); // 如果栈为空，说明所有括号都匹配成功
 }
+
+/** 给你两个字符串 haystack 和 needle ，在 haystack 中找出 needle 字符串的第一个匹配项的下标（下标从 0 开始）。
+ * 如果 needle 不是 haystack 的一部分，则返回  -1 。haystack = "sadbutsad", needle = "sad" return 0
+ * @param haystack
+ * @param needle
+ * @return
+ */
+
+int StringPractice::strStr(std::string haystack, std::string needle) {
+    if(needle.size() > haystack.size()){ // needle 长度不能大于 haystack
+        return -1;
+    }
+    if (needle.empty())
+        return 0; // 空 needle 情况，返回 0
+    // 每次检查从 i 开始的 haystack 子字符串是否等于 needle
+    // 当 needle 比 haystack 长（或从当前位置到末尾剩余的字符比 needle 少）
+    for (size_t i = 0; i <= haystack.size() - needle.size(); ++i) {
+        // 字符串 substr 返回从索引开始，长度为 len 的字符串。
+        // 从hay 字符串中提取needl 长度的字符串，将两个字符串进行笔记
+        if (haystack.substr(i, needle.size()) == needle) {
+            return i; // 找到第一个匹配项，返回下标
+        }
+    }
+    return -1; // 未找到匹配项
+}
